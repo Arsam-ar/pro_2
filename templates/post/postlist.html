@@ -1,0 +1,50 @@
+{% extends 'baes.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include "static/slider.html" %}
+  
+
+
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4" >
+
+{% for post  in pages %}
+
+
+<div class="col  " style="paddght: -10px;padding-right: ;padding-left: 50px; margin-top: 45px;    ">
+<div class="card  " style="width: 18rem;">
+  <a href="{% url 'post:postdetail' post.slug  post.id %}">
+    <img src="{{post.img.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3>{{post.title}}</h3>
+      <p class="card-text">Price : {{post.price}} T </p>
+    </div>
+  </a>
+
+
+</div>
+</div>
+{% endfor %}  
+
+</div>
+<br>
+<br>
+
+{% include "pagin.html" %}
+
+
+
+
+{% if request.user.is_authenticated %}
+
+<a class="nav-link" href="{% url 'post:create_post' %}" style="margin: -89px 110px 0px; float: right;"><button type="button" class="btn btn-success">New Post</button></a>
+
+
+{% endif %}
+{% endblock content %}

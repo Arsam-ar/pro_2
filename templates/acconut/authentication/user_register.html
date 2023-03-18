@@ -1,0 +1,22 @@
+{% extends 'baes.html' %}
+
+{% block content %}
+
+{% if form.errors %}
+
+    <p>form is error</p>
+
+{% endif %}
+
+<div class="shadow p-4 mb-5 bg-body rounded">
+    <form method="post"   action="{% url 'acconut:register_user' %}" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" value="Signup">
+    </form>
+
+
+
+</div>
+
+{% endblock content %}

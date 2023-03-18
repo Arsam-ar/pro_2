@@ -1,0 +1,27 @@
+{% extends 'baes.html' %}
+
+{% block content %}
+    <div class="modal-body p-5 pt-0">
+    <div class="modal-content rounded-4 shadow">
+    <p class="w-100 py-2 mb-2 btn " >{{postd_detail.title}}</p>
+    <img  class="rounded mx-auto d-block"  style="width:450px "    src="{{postd_detail.img.url}}" alt="">
+    <p class="w-100 py-2 mb-2 btn " >Price : {{postd_detail.price}} T </p>
+    <p class="w-100 py-2 mb-2 btn " >Model : {{postd_detail.model_post}}</p>
+    <p class="w-100 py-2 mb-2 btn " >Cpu  : {{postd_detail.cpu}}</p>
+    <p class="w-100 py-2 mb-2 btn " >Ram  : {{postd_detail.ram}}</p>
+    <p class="w-100 py-2 mb-2 btn " >Hard : {{postd_detail.hard}}</p>
+    <p class="w-100 py-2 mb-2 btn " >Gpu : {{postd_detail.gpu}} </p>
+    <p class="w-100 py-2 mb-2 btn " >Description : {{postd_detail.description}}</p>
+    <p class="w-100 py-2 mb-2 btn ">Author : {{postd_detail.author}}</p>
+    </div>
+</div>
+{% if request.user.is_authenticated %}
+    <a  href="{% url 'post:update' postd_detail.slug postd_detail.id %}"><button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Edit</button></a>
+    <a  href="{% url 'post:delete' postd_detail.slug postd_detail.id %}"><button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Delete</button></a>
+{% endif %}
+{% endblock content %}
+
+
+
+
+
